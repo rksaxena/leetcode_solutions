@@ -26,21 +26,21 @@ class Solution(object):
         if not s:
             return ""
         n = len(s)
-        intervals = [False] * n
+        within_bold_tag = [False] * n
         for word in dict:
             start = s.find(word)
             l = len(word)
             while start != -1:
                 for i in range(start, start+l):
-                    intervals[i] =True
+                    within_bold_tag[i] =True
                 start = s.find(word,start+1)
 
         i = 0
         o = ""
         while i < n:
-            if intervals[i]:
+            if within_bold_tag[i]:
                 o += "<b>"
-                while i < n and intervals[i]:
+                while i < n and within_bold_tag[i]:
                     o += s[i]
                     i += 1
                 o += "</b>"
